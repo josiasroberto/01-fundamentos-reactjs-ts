@@ -6,6 +6,37 @@ import styles from './App.module.css'
 
 import './global.css'
 
+const posts = [
+  {
+    id: 1,
+    author:{
+      avatarUrl: 'https://github.com/josiasroberto.png',
+      name: 'Josias Roberto',
+      role: 'Piloto'
+    },
+    content: [
+      {type: 'paragraph', content: 'Fala galeraa 👋'},
+      {type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀'},
+      {type: 'link', content: 'jane.design/doctorcare'},      
+    ],
+    publishedAt: new Date('2023-06-30 10:00:00'),
+  },
+  {
+    id: 2,
+    author:{
+      avatarUrl: 'https://github.com/jakeliny.png',
+      name: 'Jakeliny Gracielly',
+      role: 'Web developer'
+    },
+    content: [
+      {type: 'paragraph', content: 'Fala galeraa 👋'},
+      {type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀'},
+      {type: 'link', content: 'jane.design/doctorcare'},      
+    ],
+    publishedAt: new Date('2023-06-28 10:00:00'),
+  },
+]
+
 export function App() {
     return (
     <>
@@ -15,15 +46,16 @@ export function App() {
       <Sidebar/>
 
       <main>
-        <Post 
-          author="Josias Roberto" 
-          content="Lorem ipsum dolor sit amet consectetur adipisicing elit. At debitis molestias, obcaecati accusamus quibusdam dignissimos maiores, placeat suscipit vero voluptate omnis repellendus ipsa deleniti eaque dolor reprehenderit! Rerum, assumenda. Nulla."
-        />
-      
-        <Post 
-          author="Elvis Presley" 
-          content="Reach out to Jesus!"
-        />
+        {posts.map(post =>{
+          return (
+            <Post 
+              key={post.id}
+              author={post.author}
+              content={post.content}
+              publishedAt={post.publishedAt}
+            />
+          )
+        })}
       </main>
 
     </div>
